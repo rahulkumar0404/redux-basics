@@ -14,14 +14,14 @@ const counterSlice = createSlice({
       state.counter--;
     },
     increaseHandler(state, action) {
-      state.counter = state.counter + action.amount;
+      state.counter = state.counter + action.payload.amount;
     },
     toggleCounterHandler(state) {
       state.showCounter = !state.showCounter;
     },
   },
 });
-//name -> it can be random name and we can mutates the array and array, object because redux/toolkit 
+//name -> it can be random name and we can mutates the array and array, object because redux/toolkit
 // internally overrides the method which state are changes and create a new object
 
 // const counterReducer = (state = initialState, action) => {
@@ -54,10 +54,12 @@ const counterSlice = createSlice({
 
 // const store = createStore(counterReducer);
 
+counterSlice.actions.incrementHandler;
 const store = configureStore({
-  counter: counterSlice.reducer,
+  reducer: counterSlice.reducer,
 });
-export default store;
 
+export const counterAction = counterSlice.actions;
+export default store;
 
 // Note: configureStore used to store multiple createSlice
